@@ -2,7 +2,7 @@ using System;
 using UniRx;
 using UniRx.Triggers;
 
-namespace SystemBase.Core
+namespace SystemBase.Core.Components
 {
     public class AfterTheComponentIsAvailable<T> : IObservable<T> where T : GameComponent
     {

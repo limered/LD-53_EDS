@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SystemBase.Core
+namespace SystemBase.Core.GameSystems
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class GameSystemAttribute : Attribute

@@ -1,4 +1,6 @@
-﻿namespace SystemBase.Core
+﻿using SystemBase.Core.GameSystems;
+
+namespace SystemBase.Core.Components
 {
     public interface IGameComponent
     {

@@ -1,6 +1,7 @@
 ﻿using System;
+using SystemBase.Core.Components;
 
-namespace SystemBase.Core
+namespace SystemBase.Core.GameSystems
 {
     public interface IGameSystem
     {

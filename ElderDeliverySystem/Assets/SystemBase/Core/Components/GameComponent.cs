@@ -1,19 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using SystemBase.Core.GameSystems;
 using SystemBase.Utils;
 using UniRx;
 using UnityEngine;
 
-namespace SystemBase.Core
+namespace SystemBase.Core.Components
 {
     public class GameComponent : MonoBehaviour, IGameComponent
     {
-        public List<IDisposable> ComponentDisposables = new List<IDisposable>();
+        private readonly List<IDisposable> _componentDisposables = new();
         public virtual IGameSystem System { get; set; }
 
-        public void RegisterToGame()
+        private void RegisterToGame()
         {
-            IoC.Resolve<Game>().RegisterComponent(this);
+            var game = IoC.Resolve<Game>();
+            game.RegisterComponent(this);
+            if (GetType().GetCustomAttributes(typeof(SingletonComponentAttribute), true).Any())
+            {
+                game.RegisterSingletonComponent(this);
+            }
         }
 
         public IObservable<TComponent> WaitOn<TComponent>(ReactiveProperty<TComponent> componentToWaitOnTo)
@@ -32,9 +39,9 @@ namespace SystemBase.Core
                 .AddTo(this);
         }
 
-        public T AddDisposablele<T>(T disposable) where T : IDisposable
+        public T AddDisposable<T>(T disposable) where T : IDisposable
         {
-            ComponentDisposables.Add(disposable);
+            _componentDisposables.Add(disposable);
             return disposable;
         }
 
@@ -51,7 +58,7 @@ namespace SystemBase.Core
 
         protected void OnDestroy()
         {
-            ComponentDisposables.ForEach(disposable => disposable.Dispose());
+            _componentDisposables.ForEach(disposable => disposable.Dispose());
         }
     }
 

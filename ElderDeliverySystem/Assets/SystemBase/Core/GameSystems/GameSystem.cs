@@ -1,13 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SystemBase.Core.Components;
 using SystemBase.Utils;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+// ReSharper disable UnassignedField.Global
+// ReSharper disable InconsistentNaming
+
 // ReSharper disable UnusedType.Global
 
-namespace SystemBase.Core
+namespace SystemBase.Core.GameSystems
 {
     public abstract class GameSystem<TComponent1, TComponent2, TComponent3, TComponent4, TComponent5>
          : GameSystem<TComponent1, TComponent2, TComponent3, TComponent4>
@@ -57,6 +61,7 @@ namespace SystemBase.Core
 
     public abstract class GameSystem<TComponent> : GameSystem where TComponent : GameComponent
     {
+        [IoCResolve] protected ISharedComponentCollection SharedComponentCollection;
         private Dictionary<Type, Action<GameComponent>> _registerMethods;
 
         public override Type[] ComponentsToRegister => new[] { typeof(TComponent) };

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using SystemBase.Core.Components;
 using SystemBase.Utils;
 using UnityEngine;
 
-namespace SystemBase.Core
+namespace SystemBase.Core.GameSystems
 {
     public class GameSystemCollection
     {
