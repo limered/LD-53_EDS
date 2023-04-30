@@ -29,11 +29,11 @@ namespace Systems.Camera
             var cameraPos = camera.transform.position;
             var delta = playerPos - cameraPos;
             var delta2D = new Vector2(delta.x, delta.z);
-            if(math.abs(delta2D.x) > camera.extents.x)
+            if (math.abs(delta2D.x) > camera.extents.x)
                 cameraPos += Vector3.right * (delta2D.x - math.sign(delta2D.x) * camera.extents.x);
-            if(math.abs(delta2D.y) > camera.extents.y)
+            if (math.abs(delta2D.y) > camera.extents.y)
                 cameraPos += Vector3.forward * (delta2D.y - math.sign(delta2D.y) * camera.extents.y);
-            
+
             camera.transform.position = cameraPos;
         }
     }

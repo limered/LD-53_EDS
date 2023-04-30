@@ -7,6 +7,5 @@ namespace Systems.Camera
     public class CameraComponent : GameComponent
     {
         public float2 extents;
-        public float height;
     }
 }
