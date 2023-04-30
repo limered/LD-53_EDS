@@ -1,5 +1,6 @@
 ﻿using SystemBase.Core.Components;
 using Unity.Mathematics;
+using UnityEngine;
 
 namespace Systems.World
 {
@@ -7,5 +8,8 @@ namespace Systems.World
     public class WorldComponent : GameComponent
     {
         public float2 extents;
+        public GameObject victimPrefab;
+        public float spawnInterval;
+        public float  LastSpawnTime { get; set; }
     }
 }

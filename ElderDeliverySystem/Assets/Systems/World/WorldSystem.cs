@@ -18,7 +18,7 @@ namespace Systems.World
         {
             SystemLateUpdate()
                 .Subscribe(_ => CheckWorldBounds(world, body))
-                .AddTo(world);
+                .AddTo(body);
         }
 
         private static void CheckWorldBounds(WorldComponent world, BodyComponent body)
