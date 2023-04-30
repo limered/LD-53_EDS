@@ -8,8 +8,8 @@ namespace Systems.Movement
     {
         public float airFriction;
 
-        public float3 Acceleration { get; set; }
-        public float3 Velocity { get; set; }
+        public float3 Acceleration { get; set; } = new(0.01f, 0, 0.01f);
+        public float3 Velocity { get; set; } = new(0.01f, 0, 0.01f);
         
         public void AddForce(Vector3 force)
         {

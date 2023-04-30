@@ -3,7 +3,9 @@ using SystemBase.Utils;
 using Systems.Movement;
 using Systems.Player;
 using UniRx;
+using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Systems.Victims
 {
@@ -27,9 +29,15 @@ namespace Systems.Victims
                 var distance2D = distance.XZ();
                 if (distance2D.magnitude < component.minDistanceToPlayer)
                 {
-                    component.BodyComponent.AddForce(-distance.normalized * player.speed);
+                    component.BodyComponent.AddForce(-distance.normalized * component.fleeSpeed);
+                    return;
                 }
             }
+            
+            var newDirection = Random.insideUnitCircle.normalized;
+            var currentDirection = math.normalize(component.BodyComponent.Velocity.xz);
+            var direction = math.lerp(currentDirection, newDirection, component.randomRoamingCoefficient);
+            component.BodyComponent.AddForce(new Vector3(direction.x, 0, direction.y) * component.roamingSpeed);
         }
     }
 }
