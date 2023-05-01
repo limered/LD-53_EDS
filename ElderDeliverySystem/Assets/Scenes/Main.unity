@@ -687,5 +687,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6066213264427423189, guid: 70889870827551f40acc079d628ad6a9,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066213264427423189, guid: 70889870827551f40acc079d628ad6a9,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066213264427423189, guid: 70889870827551f40acc079d628ad6a9,
+        type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066213264639343293, guid: 70889870827551f40acc079d628ad6a9,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066213264639343294, guid: 70889870827551f40acc079d628ad6a9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 600
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70889870827551f40acc079d628ad6a9, type: 3}

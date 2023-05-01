@@ -8,6 +8,7 @@ namespace Systems.UI
     public class UiComponent : GameComponent
     {
         public TextMeshProUGUI soulsCounter;
+        public TextMeshProUGUI timer;
         public GameObject startScreen;
     }
 }

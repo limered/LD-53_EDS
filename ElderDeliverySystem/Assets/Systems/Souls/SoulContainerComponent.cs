@@ -9,6 +9,7 @@ namespace Systems.Souls
     {
         public IntReactiveProperty allSoulsCount = new(0);
         public IntReactiveProperty soulCount = new(0);
+        public IntReactiveProperty soulsTargetCount = new(0);
         public GameObject soulPrefab;
     }
 }

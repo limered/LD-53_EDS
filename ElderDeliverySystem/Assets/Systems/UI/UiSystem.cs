@@ -17,7 +17,7 @@ namespace Systems.UI
         private static void RegisterToSoulContainerInfo(SoulContainerComponent soulContainer, UiComponent component)
         {
             soulContainer.soulCount
-                .Subscribe(c => component.soulsCounter.text = $"Souls: {c}")
+                .Subscribe(c => component.soulsCounter.text = $"Souls: {c}/{soulContainer.soulsTargetCount.Value} (Management Target)")
                 .AddTo(component);
         }
     }

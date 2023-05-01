@@ -1,6 +1,6 @@
 ﻿using SystemBase;
 using SystemBase.Core.GameSystems;
-using SystemBase.Core.StateMachineBase;
+using SystemBase.GameState.Messages;
 using SystemBase.GameState.States;
 using SystemBase.Utils;
 using Systems.UI;
@@ -16,27 +16,31 @@ namespace Systems.Lifecycle
         {
             IoC.Game.gameStateContext.CurrentState
                 .Where(state => state is StartScreen)
-                .Subscribe(state => ShowStartScreen(state, component))
+                .Subscribe(_ => ShowStartScreen(component))
                 .AddTo(component);
 
-            IoC.Game.gameStateContext.CurrentState
-                .Where(state => state is Running)
-                .Subscribe(state => StartGame(state, component))
+            MessageBroker.Default.Receive<GameMsgStart>()
+                .Subscribe(_ => StartGame())
                 .AddTo(component);
 
-            IoC.Game.gameStateContext.CurrentState
-                .Where(state => state is Paused)
-                .Subscribe(state => ShowPauseMenue(state, component))
+            MessageBroker.Default.Receive<GameMsgPause>()
+                .Subscribe(_ => PauseGame())
                 .AddTo(component);
 
-            // ShowEndScreen
+            MessageBroker.Default.Receive<GameMsgUnpause>()
+                .Subscribe(_ => UnpauseGame())
+                .AddTo(component);
         }
 
-        private void ShowPauseMenue(BaseState<Game> state, RunningGameComponent component)
+        private void UnpauseGame()
         {
         }
 
-        private void StartGame(BaseState<Game> state, RunningGameComponent component)
+        private void PauseGame()
+        {
+        }
+
+        private void StartGame()
         {
             var uiComponent = SharedComponentCollection.Get<UiComponent>();
             uiComponent.startScreen.SetActive(false);
@@ -47,7 +51,7 @@ namespace Systems.Lifecycle
             Object.Instantiate(prefabs.prefabs[1]);
         }
 
-        private void ShowStartScreen(BaseState<Game> state, RunningGameComponent component)
+        private void ShowStartScreen(RunningGameComponent component)
         {
             SharedComponentCollection.Subscribe<UiComponent>(ui =>
                 {
