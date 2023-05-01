@@ -1,4 +1,6 @@
 ﻿using SystemBase.Core.GameSystems;
+using SystemBase.GameState.States;
+using SystemBase.Utils;
 using UniRx;
 using UnityEngine;
 
@@ -10,6 +12,7 @@ namespace Systems.Movement
         public override void Register(BodyComponent component)
         {
             SystemFixedUpdate(component)
+                .Where(_ => IoC.Game.gameStateContext.CurrentState.Value is Running)
                 .Subscribe(Simulate)
                 .AddTo(component);
         }

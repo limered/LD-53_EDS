@@ -27,7 +27,6 @@ namespace SystemBase
 
         private void Start()
         {
-            // MessageBroker.Default.Publish(new GameMsgStart());
             QualitySettings.vSyncCount = 0;
             // Application.targetFrameRate = 60;
         }

@@ -1,6 +1,5 @@
 ﻿using SystemBase.Core.Components;
 using TMPro;
-using UnityEngine;
 
 namespace Systems.UI
 {
