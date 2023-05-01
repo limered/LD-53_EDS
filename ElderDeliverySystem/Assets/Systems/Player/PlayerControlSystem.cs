@@ -2,6 +2,7 @@
 using Systems.Movement;
 using Systems.World;
 using UniRx;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Systems.Player
@@ -26,9 +27,23 @@ namespace Systems.Player
             if (Input.GetKey("a")) direction += Vector3.left;
             if (Input.GetKey("d")) direction += Vector3.right;
             direction.Normalize();
+
+            Animate(player, direction);
+            
             player.movementDirection.Value = direction;
 
             player.BodyComponent.AddForce(direction * player.speed);
+        }
+
+        private static void Animate(PlayerComponent player, Vector3 direction)
+        {
+            if(direction == Vector3.zero) player.animatorComponent.Play("Death_Idle");
+            
+            if(direction.x > 0) player.animatorComponent.transform.localScale = new Vector3(-10, 10, 10);
+            if(direction.x < 0) player.animatorComponent.transform.localScale = new Vector3(10, 10, 10);
+            
+            if(direction.z > 0) player.animatorComponent.Play("Death_Walk_Back");
+            else if(direction.z < 0 || math.abs(direction.x) > 0) player.animatorComponent.Play("Death_Walk");
         }
     }
 }
