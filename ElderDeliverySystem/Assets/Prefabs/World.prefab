@@ -79,7 +79,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 20, y: 20}
+  m_Size: {x: 10, y: 10}
   m_AdaptiveModeThreshold: 0.544
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extents:
-    x: 100
-    y: 100
+    x: 50
+    y: 50
   victimPrefab: {fileID: 5773417453697950713, guid: 6cc70c0827d62af48903262cecd97df2,
     type: 3}
   spawnInterval: 1

@@ -10,6 +10,7 @@ namespace Systems.World
         public float2 extents;
         public GameObject victimPrefab;
         public float spawnInterval;
-        public float  LastSpawnTime { get; set; }
+        public float LastSpawnTime { get; set; }
+        public float shortestFrameTime = float.MaxValue;
     }
 }

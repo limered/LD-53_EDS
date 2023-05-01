@@ -36,7 +36,7 @@ namespace SystemBase.Core.Components
         public bool TryGet<T>(out T component) where T : GameComponent, new()
         {
             var type = typeof(T);
-            if (!_components.ContainsKey(type))
+            if (!_components.ContainsKey(type) || _components[type].Value == null)
             {
                 component = null;
                 return false;

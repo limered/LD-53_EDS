@@ -1,4 +1,5 @@
 ﻿using SystemBase.Core.GameSystems;
+using SystemBase.GameState.States;
 using SystemBase.Utils;
 using Systems.Movement;
 using Systems.Player;
@@ -14,6 +15,8 @@ namespace Systems.Victims
     [GameSystem(typeof(PlayerControlSystem))]
     public class VictimSystem : GameSystem<VictimComponent, WorldComponent>
     {
+        private const float FifteenFps = 1f / 15f;
+
         public override void Register(VictimComponent component)
         {
             component.BodyComponent = component.GetComponent<BodyComponent>();
@@ -32,7 +35,7 @@ namespace Systems.Victims
 
         private static bool CanBeHit(VictimComponent component, AttackEvent attackEvent)
         {
-            if(component.health.Value <= 0) return false;
+            if (component.health.Value <= 0) return false;
             var distanceToAttack = (float2)component.transform.position.XZ() - attackEvent.Position.xy;
             return math.length(distanceToAttack) <= attackEvent.Range;
         }
@@ -72,12 +75,15 @@ namespace Systems.Victims
         public override void Register(WorldComponent component)
         {
             SystemUpdate(component)
+                .Where(_ => IoC.Game.gameStateContext.CurrentState.Value is Running)
                 .Subscribe(SpawnVictim)
                 .AddTo(component);
         }
 
         private void SpawnVictim(WorldComponent component)
         {
+            if (Time.deltaTime >= FifteenFps) return;
+
             if (component.LastSpawnTime + component.spawnInterval > Time.time) return;
             component.LastSpawnTime = Time.time;
             var randomSpawnPosition = new Vector3(Random.Range(-component.extents.x, component.extents.x), 0,

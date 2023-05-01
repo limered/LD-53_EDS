@@ -55,7 +55,7 @@ namespace Systems.Souls
             Object.Destroy(component.gameObject);
             var playerSoulCount = SharedComponentCollection.Get<SoulContainerComponent>();
             playerSoulCount.soulCount.Value++;
-            playerSoulCount.allSoulsCount.Value++;
+            playerSoulCount.allSoulsCount.Value++; 
         }
     }
 }

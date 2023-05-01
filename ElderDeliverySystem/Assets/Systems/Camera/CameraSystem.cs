@@ -20,7 +20,7 @@ namespace Systems.Camera
         {
             SystemUpdate()
                 .Subscribe(_ => UpdateCameraPosition(camera, player))
-                .AddTo(camera);
+                .AddTo(player);
         }
 
         private void UpdateCameraPosition(CameraComponent camera, PlayerComponent player)

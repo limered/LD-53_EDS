@@ -1,4 +1,5 @@
 ﻿using SystemBase.Core.GameSystems;
+using SystemBase.GameState.States;
 using SystemBase.Utils;
 using UniRx;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace Systems.Weapons
         public override void Register(WeaponComponent component)
         {
             SystemUpdate(component)
+                .Where(_ => IoC.Game.gameStateContext.CurrentState.Value is Running)
                 .Subscribe(Attack)
                 .AddTo(component);
         }
