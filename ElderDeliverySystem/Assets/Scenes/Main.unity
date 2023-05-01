@@ -480,7 +480,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58b8ff07cbf4b81915bb36025cce2b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soulCount: 0
+  soulCount:
+    value: 0
   soulPrefab: {fileID: 2279900353056465737, guid: 8951e180386b8c24b827f057a4e6da70,
     type: 3}
 --- !u!1 &1053209005
