@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce038a293a948abaef39138ebea4756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDistanceToPlayer: 3
+  minDistanceToPlayer: 5
   fleeSpeed: 3
   roamingSpeed: 1.5
   randomRoamingCoefficient: 0.3

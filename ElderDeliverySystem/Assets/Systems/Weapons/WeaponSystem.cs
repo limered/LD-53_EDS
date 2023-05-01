@@ -19,6 +19,7 @@ namespace Systems.Weapons
         {
             if (weapon.LastAttackTime + weapon.attackInterval > Time.time) return;
             weapon.LastAttackTime = Time.time;
+            weapon.weaponAnimator.Play("Swirl");
             MessageBroker.Default.Publish(new AttackEvent
             {
                 Damage = weapon.damage,

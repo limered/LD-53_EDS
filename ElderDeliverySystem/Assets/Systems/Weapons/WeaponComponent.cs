@@ -1,4 +1,5 @@
 ﻿using SystemBase.Core.Components;
+using UnityEngine;
 
 namespace Systems.Weapons
 {
@@ -7,6 +8,7 @@ namespace Systems.Weapons
         public float attackInterval;
         public float damage;
         public float range;
+        public Animator weaponAnimator;
         public float LastAttackTime { get; set; }
     }
 }
