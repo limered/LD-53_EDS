@@ -53,7 +53,9 @@ namespace Systems.Souls
 
             if (distance2D >= component.collectionDistance) return;
             Object.Destroy(component.gameObject);
-            SharedComponentCollection.Get<SoulContainerComponent>().soulCount.Value++;
+            var playerSoulCount = SharedComponentCollection.Get<SoulContainerComponent>();
+            playerSoulCount.soulCount.Value++;
+            playerSoulCount.allSoulsCount.Value++;
         }
     }
 }
