@@ -431,6 +431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1000111489}
   - component: {fileID: 1000111490}
+  - component: {fileID: 1000111491}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -467,6 +468,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugMainFrameCallback:
     value: 
+--- !u!114 &1000111491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000111488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a58b8ff07cbf4b81915bb36025cce2b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soulCount: 0
+  soulPrefab: {fileID: 2279900353056465737, guid: 8951e180386b8c24b827f057a4e6da70,
+    type: 3}
 --- !u!1 &1053209005
 GameObject:
   m_ObjectHideFlags: 0
