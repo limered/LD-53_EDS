@@ -1,5 +1,6 @@
 ﻿using SystemBase.Core.Components;
 using TMPro;
+using UnityEngine;
 
 namespace Systems.UI
 {
@@ -7,5 +8,6 @@ namespace Systems.UI
     public class UiComponent : GameComponent
     {
         public TextMeshProUGUI soulsCounter;
+        public GameObject startScreen;
     }
 }
