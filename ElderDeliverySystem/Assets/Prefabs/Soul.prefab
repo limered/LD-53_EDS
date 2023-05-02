@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectionDistance: 1
   vacuumDistance: 5
-  vacuumForce: 2
+  vacuumForce: 3
 --- !u!114 &7773700700903111289
 MonoBehaviour:
   m_ObjectHideFlags: 0

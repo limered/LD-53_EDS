@@ -116,6 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6037860396176284640}
   - component: {fileID: 6037860396176284641}
+  - component: {fileID: 496720778682400986}
   m_Layer: 0
   m_Name: World
   m_TagString: Untagged
@@ -157,3 +158,25 @@ MonoBehaviour:
   victimPrefab: {fileID: 5773417453697950713, guid: 6cc70c0827d62af48903262cecd97df2,
     type: 3}
   spawnInterval: 1
+  shortestFrameTime: 3.4028235e+38
+--- !u!114 &496720778682400986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6037860396176284642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb5b25978574067bf0ec9c35be657e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgrades:
+  - {fileID: 11400000, guid: e31a02a07d3f35b4ea26878523ab5a77, type: 2}
+  - {fileID: 11400000, guid: 5fa671d1f7a297d4d83b0c20b81ad37c, type: 2}
+  - {fileID: 11400000, guid: 54446175e828b994fa5eebf3f67902b4, type: 2}
+  - {fileID: 11400000, guid: f43e54f1b46a6bf49985b82f557a5cad, type: 2}
+  - {fileID: 11400000, guid: 7826525aaf69981478cf54af02815c5b, type: 2}
+  - {fileID: 11400000, guid: 49400fc815bb0964f83cfa8c0471969d, type: 2}
+  - {fileID: 11400000, guid: 5a60ff16ab9d25a4f8e83f45d0b40ff2, type: 2}
+  - {fileID: 11400000, guid: 2f2bffb846ca459419f7a8c1cdfed036, type: 2}

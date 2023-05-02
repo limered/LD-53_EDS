@@ -1,11 +1,12 @@
 ﻿using SystemBase.Core.GameSystems;
 using Systems.Movement;
+using Systems.Upgrades;
 using UniRx;
 
 namespace Systems.World
 {
     [GameSystem]
-    public class WorldSystem : GameSystem<BodyComponent>
+    public class WorldSystem : GameSystem<BodyComponent, UpgradeComponent>
     {
         public override void Register(BodyComponent component)
         {
@@ -30,6 +31,14 @@ namespace Systems.World
             if (position.z < -extents.y) position.z = -extents.y;
             if (position.z > extents.y) position.z = extents.y;
             body.transform.position = position;
+        }
+
+        public override void Register(UpgradeComponent component)
+        {
+            foreach (var upgrade in component.upgrades)
+            {
+                upgrade.isBought = false;
+            }
         }
     }
 }
