@@ -19,8 +19,8 @@ namespace Systems.UI
             startScreen.SetActive(true);
             endScreen.SetActive(false);
             PauseScreen.SetActive(false);
-            soulsCounter.enabled = false;
+            soulsCounter.enabled = false; 
             timer.enabled = false;
-        }
+        } 
     }
 }

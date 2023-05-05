@@ -31,7 +31,7 @@ namespace SystemBase
             // Application.targetFrameRate = 60;
         }
 
-        public override void Init()
+        public override void Init() 
         {
             base.Init();
 

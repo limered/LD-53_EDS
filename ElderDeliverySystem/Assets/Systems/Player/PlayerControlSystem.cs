@@ -1,4 +1,5 @@
 ﻿using SystemBase.Core.GameSystems;
+using Systems.control;
 using Systems.Movement;
 using Systems.World;
 using UniRx;
@@ -19,13 +20,16 @@ namespace Systems.Player
                 .AddTo(component);
         }
 
-        private static void ControlPlayer(PlayerComponent player)
+        private void ControlPlayer(PlayerComponent player)
         {
+            var stickControl = SharedComponentCollection.Get<ControlledByPlayerComponent>();
+            
             var direction = Vector3.zero;
             if (Input.GetKey("w")) direction += Vector3.forward;
             if (Input.GetKey("s")) direction += Vector3.back;
             if (Input.GetKey("a")) direction += Vector3.left;
             if (Input.GetKey("d")) direction += Vector3.right;
+            direction += new Vector3(stickControl.MovementAmount.x, 0, stickControl.MovementAmount.y);
             direction.Normalize();
 
             Animate(player, direction);
