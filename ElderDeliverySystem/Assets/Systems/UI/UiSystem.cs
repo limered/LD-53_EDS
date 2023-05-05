@@ -51,7 +51,7 @@ namespace Systems.UI
         private static void RegisterToTimeUpdates(RunningGameComponent game, UiComponent uiComponent)
         {
             game.timer
-                .Subscribe(t => uiComponent.timer.text = $"Time Left: {t / 60:00}:{t % 60:00}")
+                .Subscribe(t => uiComponent.timer.text = $"Time Left: {(int)(t / 60):00}:{t % 60:00}")
                 .AddTo(game);
         }
 
