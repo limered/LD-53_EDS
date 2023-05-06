@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc4cc90156824032959ed1d33be7facc, type: 3}
-  m_Name: Time2
+  m_Name: ScytheSpeed2
   m_EditorClassIdentifier: 
-  text: Doubles Round Time
-  upgradeType: 2
-  prize: 200
+  text: Doubles Scythe Frequency
+  upgradeType: 0
+  prize: 40
   isBought: 0
   requiredUpgrades:
-  - {fileID: 11400000, guid: 5a60ff16ab9d25a4f8e83f45d0b40ff2, type: 2}
+  - {fileID: 11400000, guid: e31a02a07d3f35b4ea26878523ab5a77, type: 2}
   image: {fileID: 0}

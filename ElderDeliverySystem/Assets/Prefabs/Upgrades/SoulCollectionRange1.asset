@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc4cc90156824032959ed1d33be7facc, type: 3}
-  m_Name: Time2
+  m_Name: SoulCollectionRange1
   m_EditorClassIdentifier: 
-  text: Doubles Round Time
-  upgradeType: 2
-  prize: 200
+  text: Bigger SoulCollection Radius
+  upgradeType: 4
+  prize: 1
   isBought: 0
-  requiredUpgrades:
-  - {fileID: 11400000, guid: 5a60ff16ab9d25a4f8e83f45d0b40ff2, type: 2}
+  requiredUpgrades: []
   image: {fileID: 0}

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace Systems.Upgrades
 {
@@ -8,7 +9,18 @@ namespace Systems.Upgrades
         public string text;
         public UpgradeType upgradeType;
         public int prize;
-        public Sprite image;
         public bool isBought;
+        public UpgradeSO[] requiredUpgrades;
+        public Sprite image;
+        
+        public bool CanBeBought()
+        {
+            return !isBought && requiredUpgrades.All(requiredUpgrade => requiredUpgrade.isBought);
+        }
+        
+        public void Buy()
+        {
+            isBought = true;
+        }
     }
 }
