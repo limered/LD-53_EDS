@@ -11,7 +11,7 @@ using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 namespace Systems.control
 {
     [GameSystem]
-    public class PlayerControlSystem : GameSystem<ControlledByPlayerComponent>
+    public class MobileControlSystem : GameSystem<ControlledByPlayerComponent>
     {
         public override void Register(ControlledByPlayerComponent component)
         {
