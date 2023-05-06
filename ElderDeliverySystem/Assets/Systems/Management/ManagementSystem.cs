@@ -42,7 +42,7 @@ namespace Systems.Management
         {
             souls.soulsTargetCount.Value = souls.firstTarget;
 
-            MessageBroker.Default.Receive<GameMsgUnpause>()
+            MessageBroker.Default.Receive<GameMsgUnpause>() 
                 .Subscribe(_ => SetupNewTarget(souls))
                 .AddTo(world);
 
