@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4cc90156824032959ed1d33be7facc, type: 3}
   m_Name: SoulSpeed2
   m_EditorClassIdentifier: 
-  text: Souls Move Faster
+  text: Soul Speed++
   upgradeType: 3
   prize: 40
-  isBought: 0
+  isBought: 1
   requiredUpgrades:
   - {fileID: 11400000, guid: f821ae638bb979f42b6764fe07439951, type: 2}
   image: {fileID: 0}

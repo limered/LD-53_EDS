@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4cc90156824032959ed1d33be7facc, type: 3}
   m_Name: SoulCollectionRange2
   m_EditorClassIdentifier: 
-  text: Bigger SoulCollection Radius
+  text: Collection Radius++
   upgradeType: 4
-  prize: 1
-  isBought: 0
+  prize: 200
+  isBought: 1
   requiredUpgrades:
   - {fileID: 11400000, guid: fd483fd9e7164934eb7b8ea0d4e81525, type: 2}
   image: {fileID: 0}
