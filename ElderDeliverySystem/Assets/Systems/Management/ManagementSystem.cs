@@ -61,9 +61,8 @@ namespace Systems.Management
             else
             {
                 souls.managementMessage.Value = _managementMessages[0];
+                souls.soulCount.Value = math.max(souls.soulCount.Value - souls.soulsTargetCount.Value, 0);
             }
-
-            souls.soulCount.Value = math.max(souls.soulCount.Value - souls.soulsTargetCount.Value, 0);
         }
 
         private void PrintNegativeMessage(SoulContainerComponent souls)
