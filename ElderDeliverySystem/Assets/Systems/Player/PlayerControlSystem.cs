@@ -42,12 +42,12 @@ namespace Systems.Player
         private static void Animate(PlayerComponent player, Vector3 direction)
         {
             if(direction == Vector3.zero) player.animatorComponent.Play("Death_Idle");
-            
-            if(direction.x > 0) player.animatorComponent.transform.localScale = new Vector3(-10, 10, 10);
-            if(direction.x < 0) player.animatorComponent.transform.localScale = new Vector3(10, 10, 10);
-            
+
+            var dir = math.sign(direction.x);
             if(direction.z > 0) player.animatorComponent.Play("Death_Walk_Back");
-            else if(direction.z < 0 || math.abs(direction.x) > 0) player.animatorComponent.Play("Death_Walk");
+            else if(direction.z < 0 || math.abs(dir) > 0) player.animatorComponent.Play("Death_Walk");
+            
+            player.animatorComponent.transform.localScale = dir > 0 ? new Vector3(-10, 10, 10) : new Vector3(10, 10, 10);
         }
     }
 }
