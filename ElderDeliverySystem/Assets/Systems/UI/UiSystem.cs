@@ -31,9 +31,20 @@ namespace Systems.UI
             MessageBroker.Default.Receive<GameMsgEnd>()
                 .Subscribe(_ => ShowEndScreen(component))
                 .AddTo(component);
+
+            MessageBroker.Default.Receive<SoulsChangedMessage>()
+                .Subscribe(m => UpdateSoulCount(m, component))
+                .AddTo(component);
         }
 
-        private void ShowEndScreen(UiComponent component)
+        private void UpdateSoulCount(SoulsChangedMessage soulsChangedMessage, UiComponent component)
+        {
+            var soulDifference = soulsChangedMessage.newSoulCount - soulsChangedMessage.oldSoulCount;
+            component.soulsCounterText.text = $"{soulDifference:+#;-#;0}";
+            component.soulsCounterAnimator.Play("Soulcrement");
+        }
+
+        private void ShowEndScreen(UiComponent component)  
         {
             component.endScreen.SetActive(true);
         }
@@ -65,7 +76,7 @@ namespace Systems.UI
                 .AddTo(component);
 
             soulContainer.endScreenMessage
-                .Subscribe(m => component.endScreenMessage.text = m)
+                .Subscribe(m => component.endScreenMessage.text = m) 
                 .AddTo(component);
         }
     }

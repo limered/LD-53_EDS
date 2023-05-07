@@ -14,6 +14,9 @@ namespace Systems.UI
         public GameObject endScreen;
         public TextMeshProUGUI endScreenMessage;
 
+        public Animator soulsCounterAnimator;
+        public TextMeshProUGUI soulsCounterText;
+        
         public void ShowStartScreen()
         {
             startScreen.SetActive(true);

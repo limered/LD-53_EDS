@@ -43,15 +43,14 @@ namespace Systems.Victims
 
         private static void CheckLife(VictimComponent component)
         {
-            if (component.health.Value <= 0)
+            if (!(component.health.Value <= 0)) return;
+            
+            Object.Destroy(component.gameObject);
+            MessageBroker.Default.Publish(new VictimDiedMessage
             {
-                Object.Destroy(component.gameObject);
-                MessageBroker.Default.Publish(new VictimDiedMessage
-                {
-                    soulDropCount = 1,
-                    position = component.transform.position.XZ()
-                });
-            }
+                soulDropCount = 1,
+                position = component.transform.position.XZ()
+            });
         }
 
         private void Move(VictimComponent component)
