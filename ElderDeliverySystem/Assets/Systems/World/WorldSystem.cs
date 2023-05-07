@@ -2,6 +2,8 @@
 using Systems.Movement;
 using Systems.Upgrades;
 using UniRx;
+using Unity.Mathematics;
+using UnityEngine;
 
 namespace Systems.World
 {
@@ -15,30 +17,25 @@ namespace Systems.World
                 .AddTo(component);
         }
 
-        private void StartWorldBoundCheck(WorldComponent world, BodyComponent body)
+        private void StartWorldBoundCheck(WorldComponent world, Component body)
         {
             SystemLateUpdate()
                 .Subscribe(_ => CheckWorldBounds(world, body))
                 .AddTo(body);
         }
 
-        private static void CheckWorldBounds(WorldComponent world, BodyComponent body)
+        private static void CheckWorldBounds(WorldComponent world, Component body)
         {
             var position = body.transform.position;
             var extents = world.extents;
-            if (position.x < -extents.x) position.x = -extents.x;
-            if (position.x > extents.x) position.x = extents.x;
-            if (position.z < -extents.y) position.z = -extents.y;
-            if (position.z > extents.y) position.z = extents.y;
+            position.x = math.clamp(position.x, -extents.x, extents.x);
+            position.z = math.clamp(position.z, -extents.y, extents.y);
             body.transform.position = position;
         }
 
         public override void Register(UpgradeComponent component)
         {
-            foreach (var upgrade in component.upgrades)
-            {
-                upgrade.isBought = false;
-            }
+            foreach (var upgrade in component.upgrades) upgrade.isBought = false;
         }
     }
 }
