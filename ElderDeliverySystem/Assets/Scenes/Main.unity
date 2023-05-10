@@ -884,7 +884,7 @@ PrefabInstance:
     - target: {fileID: 6893976917304617586, guid: 70889870827551f40acc079d628ad6a9,
         type: 3}
       propertyPath: m_fontSize
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6893976917304617586, guid: 70889870827551f40acc079d628ad6a9,
         type: 3}
@@ -914,12 +914,12 @@ PrefabInstance:
     - target: {fileID: 6893976917304617586, guid: 70889870827551f40acc079d628ad6a9,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6893976917304617586, guid: 70889870827551f40acc079d628ad6a9,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 3158181
+      value: 4281348261
       objectReference: {fileID: 0}
     - target: {fileID: 6893976917304617586, guid: 70889870827551f40acc079d628ad6a9,
         type: 3}

@@ -1,8 +1,13 @@
-﻿using SystemBase.Core.GameSystems;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using SystemBase.Core.GameSystems;
 using SystemBase.GameState.Messages;
 using Systems.Lifecycle;
 using Systems.Souls;
 using UniRx;
+using Unity.Mathematics;
+using UnityEngine;
 
 namespace Systems.UI
 {
@@ -33,18 +38,22 @@ namespace Systems.UI
                 .AddTo(component);
 
             MessageBroker.Default.Receive<SoulsChangedMessage>()
+                .Buffer(TimeSpan.FromMilliseconds(500), 10)
+                .Where(m => m.Any())
                 .Subscribe(m => UpdateSoulCount(m, component))
                 .AddTo(component);
         }
 
-        private void UpdateSoulCount(SoulsChangedMessage soulsChangedMessage, UiComponent component)
+        private static void UpdateSoulCount(IEnumerable<SoulsChangedMessage> soulsChangedMessage, UiComponent component)
         {
-            var soulDifference = soulsChangedMessage.newSoulCount - soulsChangedMessage.oldSoulCount;
-            component.soulsCounterText.text = $"{soulDifference:+#;-#;0}";
+            var collected = soulsChangedMessage.Aggregate(0, (acc, m) => acc + m.collectedAmount);
+            component.soulsCounterText.color =
+                math.sign(collected) > 0 ? new Color32(70, 130, 50, 0) : new Color32(165, 48, 48, 0);
+            component.soulsCounterText.text = $"{collected:+#;-#;0}";
             component.soulsCounterAnimator.Play("Soulcrement");
         }
 
-        private void ShowEndScreen(UiComponent component)  
+        private void ShowEndScreen(UiComponent component)
         {
             component.endScreen.SetActive(true);
         }
@@ -76,7 +85,7 @@ namespace Systems.UI
                 .AddTo(component);
 
             soulContainer.endScreenMessage
-                .Subscribe(m => component.endScreenMessage.text = m) 
+                .Subscribe(m => component.endScreenMessage.text = m)
                 .AddTo(component);
         }
     }

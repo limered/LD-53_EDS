@@ -61,15 +61,13 @@ namespace Systems.Souls
             
             MessageBroker.Default.Publish(new SoulsChangedMessage
             {
-                oldSoulCount = oldCount,
-                newSoulCount = playerSoulCount.soulCount.Value
+                collectedAmount = playerSoulCount.soulCount.Value - oldCount,
             });
         }
     }
 
     public class SoulsChangedMessage
     {
-        public int oldSoulCount;
-        public int newSoulCount;
+        public int collectedAmount;
     }
 }
