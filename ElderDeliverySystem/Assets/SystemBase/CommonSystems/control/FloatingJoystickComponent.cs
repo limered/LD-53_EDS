@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Systems.control
+namespace SystemBase.CommonSystems.control
 {
     public class FloatingJoystickComponent : GameComponent
     {

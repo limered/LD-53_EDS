@@ -53,7 +53,7 @@ namespace Systems.UI
             component.soulsCounterAnimator.Play("Soulcrement");
         }
 
-        private void ShowEndScreen(UiComponent component)
+        private void ShowEndScreen(UiComponent component) 
         {
             component.endScreen.SetActive(true);
         }

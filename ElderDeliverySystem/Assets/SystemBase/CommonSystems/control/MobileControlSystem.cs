@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
-namespace Systems.control
+namespace SystemBase.CommonSystems.control
 {
     [GameSystem]
     public class MobileControlSystem : GameSystem<ControlledByPlayerComponent>

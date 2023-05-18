@@ -1,9 +1,8 @@
 ﻿using SystemBase.Core.Components;
 using Unity.Mathematics;
-using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 
-namespace Systems.control
+namespace SystemBase.CommonSystems.control
 {
     [SingletonComponent]
     public class ControlledByPlayerComponent : GameComponent
