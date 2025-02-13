@@ -65,8 +65,16 @@ MonoBehaviour:
     value: 0
   soulCount:
     value: 0
+  firstTarget: 10
+  soulsTargetCount:
+    value: 0
   soulPrefab: {fileID: 2279900353056465737, guid: 8951e180386b8c24b827f057a4e6da70,
     type: 3}
+  managementMessage:
+    value: 
+  strikes: 0
+  endScreenMessage:
+    value: 
 --- !u!114 &1833418976166403924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,6 +87,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e111250fe3d54c0791f2c930675fd1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer:
+    value: 0
+  gameDuration: 30
 --- !u!114 &1833418976166403925
 MonoBehaviour:
   m_ObjectHideFlags: 0

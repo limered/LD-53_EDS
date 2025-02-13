@@ -12,5 +12,7 @@ namespace Systems.World
         public float spawnInterval;
         public float LastSpawnTime { get; set; }
         public float shortestFrameTime = float.MaxValue;
+        public int spawnCount;
+        public float spawnAreaRadius;
     }
 }

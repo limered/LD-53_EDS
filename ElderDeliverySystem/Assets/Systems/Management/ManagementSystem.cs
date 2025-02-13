@@ -42,7 +42,7 @@ namespace Systems.Management
         {
             souls.soulsTargetCount.Value = souls.firstTarget;
 
-            MessageBroker.Default.Receive<GameMsgUnpause>()
+            MessageBroker.Default.Receive<GameMsgUnpause>() 
                 .Subscribe(_ => SetupNewTarget(souls))
                 .AddTo(world);
 
@@ -61,9 +61,13 @@ namespace Systems.Management
             else
             {
                 souls.managementMessage.Value = _managementMessages[0];
+                var oldValue = souls.soulCount.Value;
+                souls.soulCount.Value = math.max(souls.soulCount.Value - souls.soulsTargetCount.Value, 0);
+                MessageBroker.Default.Publish(new SoulsChangedMessage
+                {
+                    collectedAmount = souls.soulCount.Value - oldValue,
+                });
             }
-
-            souls.soulCount.Value = math.max(souls.soulCount.Value - souls.soulsTargetCount.Value, 0);
         }
 
         private void PrintNegativeMessage(SoulContainerComponent souls)

@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 7165644264982578089}
   - component: {fileID: 7165644264982578088}
   - component: {fileID: 7165644264982578094}
+  - component: {fileID: 5386764266070211436}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -187,6 +188,20 @@ MonoBehaviour:
   damage: 5
   range: 5
   weaponAnimator: {fileID: 1692273983}
+--- !u!114 &5386764266070211436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7165644264982578101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acaa887bad1142af945e9bb6913a44e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 7165644264982578089}
+  spriteToFlip: {fileID: 7165644265133694754}
 --- !u!1 &7165644265133694764
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,6 +213,7 @@ GameObject:
   - component: {fileID: 7165644265133694765}
   - component: {fileID: 7165644265133694754}
   - component: {fileID: 7165644265133694755}
+  - component: {fileID: 4621509230563947948}
   m_Layer: 0
   m_Name: DeathSprites
   m_TagString: Untagged
@@ -293,3 +309,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4621509230563947948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7165644265133694764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1

@@ -1,8 +1,13 @@
-﻿using SystemBase.Core.GameSystems;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using SystemBase.Core.GameSystems;
 using SystemBase.GameState.Messages;
 using Systems.Lifecycle;
 using Systems.Souls;
 using UniRx;
+using Unity.Mathematics;
+using UnityEngine;
 
 namespace Systems.UI
 {
@@ -31,9 +36,24 @@ namespace Systems.UI
             MessageBroker.Default.Receive<GameMsgEnd>()
                 .Subscribe(_ => ShowEndScreen(component))
                 .AddTo(component);
+
+            MessageBroker.Default.Receive<SoulsChangedMessage>()
+                .Buffer(TimeSpan.FromMilliseconds(500), 10)
+                .Where(m => m.Any())
+                .Subscribe(m => UpdateSoulCount(m, component))
+                .AddTo(component);
         }
 
-        private void ShowEndScreen(UiComponent component)
+        private static void UpdateSoulCount(IEnumerable<SoulsChangedMessage> soulsChangedMessage, UiComponent component)
+        {
+            var collected = soulsChangedMessage.Aggregate(0, (acc, m) => acc + m.collectedAmount);
+            component.soulsCounterText.color =
+                math.sign(collected) > 0 ? new Color32(70, 130, 50, 0) : new Color32(165, 48, 48, 0);
+            component.soulsCounterText.text = $"{collected:+#;-#;0}";
+            component.soulsCounterAnimator.Play("Soulcrement");
+        }
+
+        private void ShowEndScreen(UiComponent component) 
         {
             component.endScreen.SetActive(true);
         }
@@ -51,7 +71,7 @@ namespace Systems.UI
         private static void RegisterToTimeUpdates(RunningGameComponent game, UiComponent uiComponent)
         {
             game.timer
-                .Subscribe(t => uiComponent.timer.text = $"Time Left: {t / 60:00}:{t % 60:00}")
+                .Subscribe(t => uiComponent.timer.text = $"Time Left: {(int)(t / 60):00}:{t % 60:00}")
                 .AddTo(game);
         }
 

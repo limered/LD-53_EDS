@@ -155,10 +155,12 @@ MonoBehaviour:
   extents:
     x: 50
     y: 50
-  victimPrefab: {fileID: 5773417453697950713, guid: 6cc70c0827d62af48903262cecd97df2,
+  victimPrefab: {fileID: 8171639321585492039, guid: 7e1558c82c7869347938ccdfe08d151f,
     type: 3}
   spawnInterval: 1
   shortestFrameTime: 3.4028235e+38
+  spawnCount: 10
+  spawnAreaRadius: 10
 --- !u!114 &496720778682400986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,5 +180,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f43e54f1b46a6bf49985b82f557a5cad, type: 2}
   - {fileID: 11400000, guid: 7826525aaf69981478cf54af02815c5b, type: 2}
   - {fileID: 11400000, guid: 49400fc815bb0964f83cfa8c0471969d, type: 2}
+  - {fileID: 11400000, guid: f821ae638bb979f42b6764fe07439951, type: 2}
+  - {fileID: 11400000, guid: 0f2f0e0cb9cf102468d6f02cc7c69724, type: 2}
+  - {fileID: 11400000, guid: 324b40f0886d5764ba9d84095a5bcc9f, type: 2}
+  - {fileID: 11400000, guid: 521e44c7bedd198438d936e7ad64ad3f, type: 2}
+  - {fileID: 11400000, guid: 33132aa904964114697986235f76acfb, type: 2}
   - {fileID: 11400000, guid: 5a60ff16ab9d25a4f8e83f45d0b40ff2, type: 2}
   - {fileID: 11400000, guid: 2f2bffb846ca459419f7a8c1cdfed036, type: 2}
+  - {fileID: 11400000, guid: fd483fd9e7164934eb7b8ea0d4e81525, type: 2}
+  - {fileID: 11400000, guid: ed29fea3be65ba94cb8a19a84740a461, type: 2}
+  - {fileID: 11400000, guid: 2ce7fdc7190cca9469dd08853c687705, type: 2}

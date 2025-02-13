@@ -13,7 +13,7 @@ namespace Systems.UI
         public TextMeshProUGUI prize;
         public TextMeshProUGUI description;
         private UpgradeSO _upgrade;
-        public bool CanBeBought => _sharedComponentCollection.Get<SoulContainerComponent>().soulCount.Value >= _upgrade.prize;
+        public bool PlayerHasMoney => _sharedComponentCollection.Get<SoulContainerComponent>().soulCount.Value >= _upgrade.prize;
         private ISharedComponentCollection _sharedComponentCollection;
         private Button _button; 
 
@@ -28,7 +28,7 @@ namespace Systems.UI
 
         public void Buy()
         {
-            if(_upgrade.isBought || !CanBeBought) return;
+            if(!_upgrade.CanBeBought() || !PlayerHasMoney) return;
             
             _upgrade.isBought = true;
             MessageBroker.Default.Publish(new UpgradeMessage { upgrade = _upgrade });
@@ -36,7 +36,7 @@ namespace Systems.UI
 
         private void Update()
         {
-            _button.interactable = CanBeBought && !_upgrade.isBought;
+            _button.interactable = PlayerHasMoney && !_upgrade.isBought;
         }
     }
 }

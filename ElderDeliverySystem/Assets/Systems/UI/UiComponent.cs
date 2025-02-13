@@ -14,13 +14,16 @@ namespace Systems.UI
         public GameObject endScreen;
         public TextMeshProUGUI endScreenMessage;
 
+        public Animator soulsCounterAnimator;
+        public TextMeshProUGUI soulsCounterText;
+        
         public void ShowStartScreen()
         {
             startScreen.SetActive(true);
             endScreen.SetActive(false);
             PauseScreen.SetActive(false);
-            soulsCounter.enabled = false;
+            soulsCounter.enabled = false; 
             timer.enabled = false;
-        }
+        } 
     }
 }

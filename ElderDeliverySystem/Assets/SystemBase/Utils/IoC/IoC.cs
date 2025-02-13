@@ -51,7 +51,7 @@ namespace SystemBase.Utils
                 ResolveType = typeof(TImplementation)
             };
 
-            if (replaceIfAlreadyRegistered && _registrations.ContainsKey(typeof(TImplementation)))
+            if (replaceIfAlreadyRegistered && _registrations.ContainsKey(typeof(TInterface)))
                 _registrations[typeof(TInterface)] = reg;
             else
                 _registrations.Add(typeof(TInterface), reg);

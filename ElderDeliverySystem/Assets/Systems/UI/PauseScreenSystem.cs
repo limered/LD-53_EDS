@@ -1,4 +1,5 @@
 ﻿using SystemBase.Core.GameSystems;
+using SystemBase.Utils;
 using Systems.Souls;
 using Systems.Upgrades;
 using UniRx;
@@ -17,14 +18,18 @@ namespace Systems.UI
         }
 
         private void GenerateUpgrades(
-            UpgradeComponent upgrades, 
-            PauseScreenComponent component,
-            SoulContainerComponent souls)
+            UpgradeComponent upgrades,
+            PauseScreenComponent component)
         {
+            component.upgradeContainer.RemoveAllChildren();
+
             foreach (var upgrade in upgrades.upgrades)
             {
+                if (!upgrade.CanBeBought()) continue;
+
                 var upgradeUi = Object.Instantiate(component.upgradePrefab, component.upgradeContainer.transform)
                     .GetComponent<UpgradeUiComponent>();
+
                 upgradeUi.SetUpgrade(upgrade, SharedComponentCollection);
             }
         }
@@ -34,9 +39,15 @@ namespace Systems.UI
             souls.managementMessage
                 .Subscribe(m => component.managementMessage.text = m)
                 .AddTo(component);
-            
+
             SharedComponentCollection
-                .Subscribe<UpgradeComponent>(upgrades => GenerateUpgrades(upgrades, component, souls))
+                .Subscribe<UpgradeComponent>(upgrades =>
+                {
+                    GenerateUpgrades(upgrades, component);
+                    MessageBroker.Default.Receive<UpgradeMessage>()
+                        .Subscribe(_ => GenerateUpgrades(upgrades, component))
+                        .AddTo(component);
+                })
                 .AddTo(component);
         }
     }

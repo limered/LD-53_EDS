@@ -54,8 +54,20 @@ namespace Systems.Souls
             if (distance2D >= component.collectionDistance) return;
             Object.Destroy(component.gameObject);
             var playerSoulCount = SharedComponentCollection.Get<SoulContainerComponent>();
+            
+            var oldCount = playerSoulCount.soulCount.Value;
             playerSoulCount.soulCount.Value++;
-            playerSoulCount.allSoulsCount.Value++; 
+            playerSoulCount.allSoulsCount.Value++;
+            
+            MessageBroker.Default.Publish(new SoulsChangedMessage
+            {
+                collectedAmount = playerSoulCount.soulCount.Value - oldCount,
+            });
         }
+    }
+
+    public class SoulsChangedMessage
+    {
+        public int collectedAmount;
     }
 }

@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc4cc90156824032959ed1d33be7facc, type: 3}
-  m_Name: ScytheSpeedX4
+  m_Name: ScytheSpeed3
   m_EditorClassIdentifier: 
   text: Doubles Scythe Frequency
-  upgradeType: 1
-  prize: 40
-  image: {fileID: 0}
+  upgradeType: 0
+  prize: 80
   isBought: 0
+  requiredUpgrades:
+  - {fileID: 11400000, guid: 5fa671d1f7a297d4d83b0c20b81ad37c, type: 2}
+  - {fileID: 11400000, guid: e31a02a07d3f35b4ea26878523ab5a77, type: 2}
+  image: {fileID: 0}

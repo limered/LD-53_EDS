@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c8e7f4b7e94de1a9a57329e011cea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectionDistance: 1
+  collectionDistance: 1.25
   vacuumDistance: 5
   vacuumForce: 3
 --- !u!114 &7773700700903111289

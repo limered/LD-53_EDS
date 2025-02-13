@@ -5,7 +5,6 @@ using Systems.Player;
 using Systems.Souls;
 using Systems.Weapons;
 using UniRx;
-using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -13,19 +12,41 @@ namespace Systems.Upgrades
 {
     public enum UpgradeType
     {
-        ScytheSpeedX2,
-        ScytheSpeedX4,
-        ScytheSpeedX8,
-        SpeedX2,
-        SpeedX4,
-        SpeedX8,
-        TimeX2,
-        TimeX4,
+        ScytheSpeed,
+        PlayerSpeed,
+        PlayTime,
+        SoulSpeed,
+        CollectionRadius
     }
-    
+
     [GameSystem]
     public class UpgradeSystem : GameSystem<UpgradeComponent>
     {
+        private readonly Action[] _upgradeActions =
+        {
+            () => Object.FindObjectOfType<WeaponComponent>().attackInterval /= 2f,
+            () => Object.FindObjectOfType<PlayerComponent>().speed += 1,
+            () => Object.FindObjectOfType<RunningGameComponent>().gameDuration *= 2,
+            () =>
+            {
+                var souls = Object.FindObjectsByType<SoulComponent>(FindObjectsInactive.Include,
+                    FindObjectsSortMode.InstanceID);
+                foreach (var soul in souls) soul.vacuumForce += 1;
+                Object.FindObjectOfType<SoulContainerComponent>()
+                    .soulPrefab.GetComponent<SoulComponent>()
+                    .vacuumForce += 1;
+            },
+            () =>
+            {
+                var souls = Object.FindObjectsByType<SoulComponent>(FindObjectsInactive.Include,
+                    FindObjectsSortMode.InstanceID);
+                foreach (var soul in souls) soul.vacuumDistance *= 2;
+                Object.FindObjectOfType<SoulContainerComponent>()
+                    .soulPrefab.GetComponent<SoulComponent>()
+                    .vacuumDistance *= 2;
+            }
+        };
+
         public override void Register(UpgradeComponent component)
         {
             MessageBroker.Default.Receive<UpgradeMessage>()
@@ -36,35 +57,8 @@ namespace Systems.Upgrades
         private void Upgrade(UpgradeSO objUpgrade)
         {
             SharedComponentCollection.Get<SoulContainerComponent>().soulCount.Value -= objUpgrade.prize;
-            switch (objUpgrade.upgradeType)
-            {
-                case UpgradeType.ScytheSpeedX2:
-                    Object.FindObjectOfType<WeaponComponent>().attackInterval /= 2f;
-                    break;
-                case UpgradeType.ScytheSpeedX4:
-                    Object.FindObjectOfType<WeaponComponent>().attackInterval /= 2f;
-                    break;
-                case UpgradeType.ScytheSpeedX8:
-                    Object.FindObjectOfType<WeaponComponent>().attackInterval /= 2f;
-                    break;
-                case UpgradeType.SpeedX2:
-                    Object.FindObjectOfType<PlayerComponent>().speed += 1;
-                    break;
-                case UpgradeType.SpeedX4:
-                    Object.FindObjectOfType<PlayerComponent>().speed += 1;
-                    break;
-                case UpgradeType.SpeedX8:
-                    Object.FindObjectOfType<PlayerComponent>().speed += 1;
-                    break;
-                case UpgradeType.TimeX2:
-                    Object.FindObjectOfType<RunningGameComponent>().gameDuration *= 2;
-                    break;
-                case UpgradeType.TimeX4:
-                    Object.FindObjectOfType<RunningGameComponent>().gameDuration *= 2;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            objUpgrade.Buy();
+            _upgradeActions[(int)objUpgrade.upgradeType]();
         }
     }
 }

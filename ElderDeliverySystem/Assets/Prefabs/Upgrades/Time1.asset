@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Time1
   m_EditorClassIdentifier: 
   text: Doubles Round Time
-  upgradeType: 6
+  upgradeType: 2
   prize: 100
-  image: {fileID: 0}
   isBought: 0
+  requiredUpgrades: []
+  image: {fileID: 0}
